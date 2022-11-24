@@ -3,6 +3,7 @@
 # Step 1: 
 Please wait about 8 minutes because we embed the full environment (maven,..)
 </br>
+run in call_billing folder
 run command : docker build -t call_billing .
 
 # Step 2:
