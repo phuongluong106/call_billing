@@ -1,0 +1,108 @@
+# ===================================================================
+# Spring Boot configuration for the "prod" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+  path: logs
+  level:
+    ROOT: INFO
+    vn.homecredit.esupplement: DEBUG
+
+spring:
+  application:
+    name: CallBillingService
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6580407
+    username: sql6580407
+    password: WwdeYXG5mE
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      minimumIdle: 10
+      maximumPoolSize: 100
+      idleTimeout: 60000
+      maxLifetime: 180000
+      connectionTimeout: 30000
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        connection:
+          release_mode: after_statement
+        current_session_context_class: jta
+        show_sql: false
+        format_sql: true
+        generate_statistics: false
+        jdbc:
+          time_zone: Asia/Ho_Chi_Minh
+          batch_size: 10
+        dialect: org.hibernate.dialect.MySQLDialect
+        enable_lazy_load_no_trans: true
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 20
+# ===================================================================
+# Server Config
+#
+# ===================================================================
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+  tomcat:
+    basedir: ${logging.path}
+    accesslog:
+      directory: /dev
+      enabled: true
+      prefix: stdout
+      buffered: false
+      suffix:
+      file-date-format:
+      pattern: '{"thread":"%I","@timestamp":"%t","logger_name":"AccessLogger","host":"%h","uri":"%r","httpStatus":%s,"bytes":%b,"time":%D,"traceId":"%{traceId}r-%{spanId}r"}'
+      #pattern: '%h %l %u %t "%r" %s %b %D'
+management:
+  metrics:
+    enabled: true
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure.include: "*"
+      base-path: /api/actuator
+  endpoint:
+    health:
+      sensitive: false
+      show-details: always
+      db.enabled: true
+      defaults.enabled: true
+auth:
+  users:
+    -
+      username: GMA_User
+      password: $2a$10$jVdB0IUvu9DaSVLKsRvaPet4.EsLXwFVsBRrVMYw/GKFzu1Xkibt. #GMA_User
+      channel: GMA
