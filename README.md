@@ -15,3 +15,9 @@ access: http://127.0.0.1:8080/swagger-ui.html
 
 # Step 4:
 Test
+</br>
+#NOTE:
+I used free mysql DB . So if we have DB problem. You can change config values in application-dev.yml and run sql script in sql folder!
+</br>
+[image](https://user-images.githubusercontent.com/26063810/203938523-81487a97-131a-47ef-9b3e-954da1054381.png)
+ 
