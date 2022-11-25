@@ -16,7 +16,7 @@ access: http://127.0.0.1:8080/swagger-ui.html
 # Step 4:
 Test
 </br>
-#NOTE:
+# NOTE:
 I used free MySQL DB . So if you have a DB problem. You can change config values in application-dev.yml and run sql script in sql folder! (the detail in below the  image) , then please rebuild docker
 </br>
 
