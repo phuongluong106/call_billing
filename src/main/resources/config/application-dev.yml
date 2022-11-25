@@ -28,9 +28,9 @@ spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6580407
-        username: sql6580407
-        password: WwdeYXG5mE
+        url: jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6580611
+        username: sql6580611
+        password: VK9ChnIjXw
         hikari:
             poolName: Hikari
             auto-commit: false
